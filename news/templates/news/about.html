@@ -1,0 +1,25 @@
+{% extends 'news/base.html' %}
+
+
+
+{% block content %}
+    
+    <h1>
+      About Page for Moringa Tribune
+    </h1>
+
+    {% for new in news %}
+      <h2>
+        {{new.title}}
+      </h2>
+      <p>
+        By {{new.author}} on the {{new.date_posted}}
+      </p>
+      <p>
+        {{new.content}}
+      </p>
+
+    {% endfor %}
+
+
+{% endblock content %}

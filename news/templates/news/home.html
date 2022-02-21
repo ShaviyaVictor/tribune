@@ -1,17 +1,25 @@
-<!DOCTYPE html>
-<html>
-  
-  <head>
+{% extends 'news/base.html' %}
 
-    <title></title>
 
-  </head>
-  <body>
+
+{% block content %}
     
     <h1>
       Welcome to the Moringa Tribune
     </h1>
 
-  </body>
+    {% for new in news %}
+      <h2>
+        {{new.title}}
+      </h2>
+      <p>
+        By {{new.author}} on the {{new.date_posted}}
+      </p>
+      <p>
+        {{new.content}}
+      </p>
 
-</html>
+    {% endfor %}
+
+
+{% endblock content %}

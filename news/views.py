@@ -4,15 +4,45 @@ import datetime as dt
 
 
 
+news = [
+
+  {
+    'author': 'Victor Shaviya',
+    'title': 'Templating in Django',
+    'content': 'Templating can be very time saving and efficient',
+    'date_posted': '21st of February 2022'
+  },
+
+  {
+    'author': 'Hycine Mapendo',
+    'title': 'Templating in Flask',
+    'content': 'Templating here was also time saving and efficient',
+    'date_posted': '15th of January 2022'
+  }
+
+]
+
+
+
 # Create your views here.
 def welcome(request) :
   
-  return HttpResponse('<h1>Welcome to the Moringa Tribune</h1>')
+  reports = {
+    'news': news
+  }
+  
+
+  return render(request, 'news/home.html', reports)
 
 
 def about(request) :
 
-  return HttpResponse('<h1>About Page for Moringa Tribune</h1>')
+  reports = {
+    'news': news
+  }
+  # title = 'News~Welcome'
+
+  return render(request, 'news/about.html', reports)
 
 
 def news_of_day(request) :
@@ -32,7 +62,7 @@ def news_of_day(request) :
       </html>
           '''
   
-  return HttpResponse(html)
+  return render(request, 'news/today.html')
 
 
 def convert_dates(dates) :
@@ -71,4 +101,4 @@ def past_days_news(request, past_date) :
       </html>
           '''
 
-  return HttpResponse(html)
+  return render(request, 'news/archive.html')
