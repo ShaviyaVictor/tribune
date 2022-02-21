@@ -1,17 +1,19 @@
-<!DOCTYPE html>
-<html>
-  
-  <head>
+{% extends 'news/base.html' %}
 
-    <title></title>
 
-  </head>
-  <body>
+
+{% block content %}
     
+
+{{ block.super }}
+
     <h1>
       Welcome to today's news highlights
     </h1>
 
-  </body>
+    <h1>
+      {{ html }}
+    </h1>
 
-</html>
+
+{% endblock content %}

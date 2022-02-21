@@ -53,16 +53,12 @@ def news_of_day(request) :
   day = convert_dates(date)
 
   html = f'''
-      <html>
-        <body>
-          <h1>
+      
             News for {day}, {date.day}-{date.month}-{date.year}
-          </h1>
-        </body>
-      </html>
+          
           '''
   
-  return render(request, 'news/today.html')
+  return render(request, 'news/today.html', {'html': html})
 
 
 def convert_dates(dates) :

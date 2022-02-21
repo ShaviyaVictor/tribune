@@ -1,3 +1,5 @@
+{% load static %}
+
 <!DOCTYPE html>
 <html>
   
@@ -11,6 +13,8 @@
 
 
 
+    <link rel="stylesheet" href="{% static 'news/main.css' %}">
+
     {% if title %}
       {{title}}
     {% else %}
@@ -19,7 +23,18 @@
 
   </head>
   <body>
-
+    <nav class="navbar navbar-inverse">
+      <div class="container">
+        <div class="navbar-header">
+          <a class="navbar-brand" href="{% url 'News~Welcome' %}">HOME</a>
+        </div>
+        <a class="navbar-brand" href="{% url 'News~Today' %}">HIGHLIGHTS</a>
+        </div>
+        <a class="navbar-brand" href="{% url 'News~About' %}">ABOUT</a>
+        </div>
+      </div>
+    </nav>
+    
 
     <div class="container">
 
