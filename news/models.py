@@ -31,7 +31,10 @@ class Tag(models.Model) :
 class Article(models.Model) :
   title = models.CharField(max_length=60)
   post = models.TextField()
+  # foreign key column that will store the ID of the Editor from the Editor table.
   editor = models.ForeignKey(Editor)
+  # ManyToManyField field that creates a separate join table. This new table handles mapping between articles and tags.
+  tags = models.ManyToManyField(Tag)
 
 
 
