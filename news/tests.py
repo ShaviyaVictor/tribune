@@ -20,5 +20,8 @@ class EditorTestClass(TestCase) :
     editors = Editor.objects.all()
     self.assertTrue(len(editors) > 0)
 
- 
-  
+  # Testing the delete method
+  def test_delete_method(self) :
+    self.josphine.delete_editor()
+    editors = Editor.objects.all()
+    self.assertTrue(len(editors) < 1)  
