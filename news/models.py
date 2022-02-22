@@ -1,3 +1,4 @@
+from turtle import title
 from django.db import models
 
 
@@ -25,3 +26,17 @@ class Tag(models.Model) :
 
   class Meta :
     ordering = ['-name']
+
+
+class Article(models.Model) :
+  title = models.CharField(max_length=60)
+  post = models.TextField()
+  editor = models.ForeignKey(Editor)
+
+
+
+  def __str__(self) -> str:
+      return self.title
+
+  class Meta :
+    ordering = ['-title']
