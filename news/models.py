@@ -38,6 +38,10 @@ class Tag(models.Model) :
   def save_tag(self) :
     self.save()
 
+  # Define the delete_editor() method 
+  def delete_editor(self) :
+    self.delete()
+
 
 class Article(models.Model) :
   title = models.CharField(max_length=60)

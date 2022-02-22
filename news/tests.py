@@ -43,4 +43,10 @@ class TagTestClass(TestCase) :
     tags = Tag.objects.all()
     self.assertTrue(len(tags) > 0)
 
+  # Testing the delete method 
+  def test_delete_method(self) :
+    self.top.delete_editor()
+    tags = Tag.objects.all()
+    self.assertTrue(len(tags) -+1)
+
   
