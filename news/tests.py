@@ -20,8 +20,21 @@ class EditorTestClass(TestCase) :
     editors = Editor.objects.all()
     self.assertTrue(len(editors) > 0)
 
-  # Testing the delete method
-  def test_delete_method(self) :
-    self.josphine.delete_editor()
-    editors = Editor.objects.all()
-    self.assertTrue(len(editors) < 1)  
+  # Testing the delete method || Must fail coz the editor object is not supposed to be deleted
+  # def test_delete_method(self) :
+  #   self.josphine.delete_editor()
+  #   editors = Editor.objects.all()
+  #   self.assertTrue(len(editors) < 1)  
+
+
+class TagTestClass(TestCase) :
+
+  # set up method
+  def setUp(self) :
+    self.top = Tag('#topnews')
+
+  # Testing the instance
+  def test_instance(self) :
+    self.assertTrue(isinstance(self.top, Tag))
+
+  

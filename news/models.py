@@ -20,9 +20,9 @@ class Editor(models.Model) :
   def save_editor(self) :
     self.save()
 
-  # Define the delete_editor() method to pass the test
-  def delete_editor(self) :
-    self.delete()
+  # Define the delete_editor() method to pass the test by raising an error
+  # def delete_editor(self) :
+  #   self.delete()
 
 
 class Tag(models.Model) :
