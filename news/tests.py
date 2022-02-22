@@ -37,4 +37,10 @@ class TagTestClass(TestCase) :
   def test_instance(self) :
     self.assertTrue(isinstance(self.top, Tag))
 
+  # Testing the save_method for the Tag model
+  def test_save_method(self) :
+    self.top.save_tag()
+    tags = Tag.objects.all()
+    self.assertTrue(len(tags) > 0)
+
   
