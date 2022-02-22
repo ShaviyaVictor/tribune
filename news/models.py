@@ -16,6 +16,10 @@ class Editor(models.Model) :
   class Meta :
     ordering = ['-first_name']
 
+  # Define save_editor() method to pass the test
+  def save_editor(self) :
+    self.save()
+
 
 class Tag(models.Model) :
   name = models.CharField(max_length=30)

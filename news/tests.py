@@ -19,3 +19,6 @@ class EditorTestClass(TestCase) :
     self.josphine.save_editor()
     editors = Editor.objects.all()
     self.assertTrue(len(editors) > 0)
+
+ 
+  
