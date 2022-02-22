@@ -16,7 +16,7 @@ class Editor(models.Model) :
     ordering = ['-first_name']
 
 
-class Tags(models.Model) :
+class Tag(models.Model) :
   name = models.CharField(max_length=30)
 
   
