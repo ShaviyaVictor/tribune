@@ -31,7 +31,7 @@ class TagTestClass(TestCase) :
 
   # set up method
   def setUp(self) :
-    self.top = Tag('#topnews')
+    self.top = Tag(id='1')
 
   # Testing the instance
   def test_instance(self) :

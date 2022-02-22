@@ -35,6 +35,9 @@ class Tag(models.Model) :
   class Meta :
     ordering = ['-name']
 
+  def save_tag(self) :
+    self.save()
+
 
 class Article(models.Model) :
   title = models.CharField(max_length=60)
