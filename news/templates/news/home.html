@@ -13,15 +13,12 @@
 
     {% for new in news %}
       <h2>
-        {{new.title}}
+        Post made by {{new.first_name}}
       </h2>
       <p>
-        By {{new.author}} on the {{new.date_posted}}
+        Of surname {{new.last_name}}
       </p>
-      <p>
-        {{new.content}}
-      </p>
-
+      
     {% endfor %}
 
 

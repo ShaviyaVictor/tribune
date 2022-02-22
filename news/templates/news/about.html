@@ -4,22 +4,22 @@
 
 {% block content %}
     
+{{ block.super }}
+
     <h1>
-      About Page for Moringa Tribune
+      Welcome to the Moringa Tribune
     </h1>
 
     {% for new in news %}
       <h2>
-        {{new.title}}
+        Post made by {{new.first_name}}
       </h2>
       <p>
-        By {{new.author}} on the {{new.date_posted}}
+        Of surname {{new.last_name}}
       </p>
-      <p>
-        {{new.content}}
-      </p>
-
+      
     {% endfor %}
 
 
 {% endblock content %}
+

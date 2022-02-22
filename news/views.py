@@ -1,48 +1,32 @@
 from django.shortcuts import render
 from django.http import HttpResponse, Http404
 import datetime as dt
+from .models import Editor
 
 
 
-news = [
-
-  {
-    'author': 'Victor Shaviya',
-    'title': 'Templating in Django',
-    'content': 'Templating can be very time saving and efficient',
-    'date_posted': '21st of February 2022'
-  },
-
-  {
-    'author': 'Hycine Mapendo',
-    'title': 'Templating in Flask',
-    'content': 'Templating here was also time saving and efficient',
-    'date_posted': '15th of January 2022'
-  }
-
-]
 
 
 
 # Create your views here.
 def welcome(request) :
   
-  reports = {
-    'news': news
+  context = {
+    'news': Editor.objects.all()
   }
   
 
-  return render(request, 'news/home.html', reports)
+  return render(request, 'news/home.html', context)
 
 
 def about(request) :
 
-  reports = {
-    'news': news
+  context = {
+    'news': Editor.objects.all()
   }
   # title = 'News~Welcome'
 
-  return render(request, 'news/about.html', reports)
+  return render(request, 'news/about.html', context)
 
 
 def news_of_day(request) :
