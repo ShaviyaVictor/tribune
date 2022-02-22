@@ -1,5 +1,5 @@
-from turtle import title
-from django.db import models
+from django.utils import timezone
+from django.db import models 
 
 
 
@@ -32,9 +32,11 @@ class Article(models.Model) :
   title = models.CharField(max_length=60)
   post = models.TextField()
   # foreign key column that will store the ID of the Editor from the Editor table.
-  editor = models.ForeignKey(Editor)
+  editor = models.ForeignKey(Editor, on_delete=models.CASCADE)
   # ManyToManyField field that creates a separate join table. This new table handles mapping between articles and tags.
   tags = models.ManyToManyField(Tag)
+  # add a timestamp to our model and use an argument to enable us edit the time of edit
+  pub_date = models.DateTimeField(default=timezone.now)
 
 
 
