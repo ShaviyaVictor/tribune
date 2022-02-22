@@ -13,3 +13,9 @@ class EditorTestClass(TestCase) :
   # testing the instance
   def test_instance(self) :
     self.assertTrue(isinstance(self.josphine, Editor))
+
+  # Testing the Save method
+  def test_save_method(self) :
+    self.josphine.save_editor()
+    editors = Editor.objects.all()
+    self.assertTrue(len(editors) > 0)
