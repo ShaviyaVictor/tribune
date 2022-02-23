@@ -86,7 +86,7 @@ class ArticleTestClass(TestCase) :
 
 
   def test_get_past_days_news(self) :
-    test_date = '2022-02-22'
+    test_date = '2020-02-22'
     date = dt.datetime.strptime(test_date, '%Y-%m-%d').date()
     past_days_news = Article.days_news(date)
 
