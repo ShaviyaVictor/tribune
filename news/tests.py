@@ -1,5 +1,8 @@
 from django.test import TestCase
+
+from news.views import past_days_news
 from .models import Article, Tag, Editor
+import datetime as dt
 
 
 
@@ -74,10 +77,21 @@ class ArticleTestClass(TestCase) :
     self.new_article.tags.add(self.new_tag)
 
 
-  def test_news_of_day(self) :
+
+  def test_get_news_of_day(self) :
     today_news = Article.todays_news()
     
     self.assertTrue(len(today_news) > 0)
+
+
+
+  def test_get_past_days_news(self) :
+    test_date = '2022-02-22'
+    date = dt.datetime.strptime(test_date, '%Y-%m-%d').date()
+    past_days_news = Article.days_news(date)
+
+    self.assertTrue(len(past_days_news) == 0)
+    
 
 
   # Craeting a delete method that deletes all instances of our models from the database after each test.
