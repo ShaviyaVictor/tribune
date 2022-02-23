@@ -13,7 +13,17 @@
 
     <h1>
       {{ html }}
-    </h1>
+    </h1><br>
+
+    {% for new in news %}
+    <h2>
+      Post made by {{new.title}}
+    </h2>
+    <p>
+      Of surname {{new.post}}
+    </p>
+    
+  {% endfor %}
 
 
 {% endblock content %}

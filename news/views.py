@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import redirect, render
 from django.http import HttpResponse, Http404
 import datetime as dt
 from .models import Editor, Article
@@ -71,6 +71,8 @@ def past_days_news(request, past_date) :
   except ValueError :
   # Raise 404 error when ValueError is thrown
     raise Http404()
+    
+    assert False
 
   day= convert_dates(date)
 
@@ -84,4 +86,9 @@ def past_days_news(request, past_date) :
       </html>
           '''
 
-  return render(request, 'news/archive.html')
+  if date == dt.date.today() :
+    return redirect(news_of_day)
+
+  news = Article.days_news(date)
+
+  return render(request, 'news/archive.html' {'date':date, 'news':news})
