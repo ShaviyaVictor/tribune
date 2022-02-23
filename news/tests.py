@@ -91,6 +91,14 @@ class ArticleTestClass(TestCase) :
     past_days_news = Article.days_news(date)
 
     self.assertTrue(len(past_days_news) == 0)
+
+
+
+  def test_search_term(self) :
+    # test_term = 'Programming'
+    articles_found = Article.search_by_title()
+
+    self.assertTrue(len(articles_found) > 0)
     
 
 
