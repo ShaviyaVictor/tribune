@@ -7,16 +7,19 @@
 {{ block.super }}
 
     <h1>
-      Welcome to the Moringa Tribune
+      Below is a list of our top editors
     </h1>
 
     {% for new in news %}
-      <h2>
-        Post made by {{new.first_name}}
-      </h2>
-      <p>
-        Of surname {{new.last_name}}
-      </p>
+    
+    <div class="container">
+
+      <ul>
+        <li> {{new.first_name}} {{new.last_name}} </li>
+      </ul>
+
+    </div>
+    
       
     {% endfor %}
 
