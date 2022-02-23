@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpResponse, Http404
 import datetime as dt
-from .models import Editor
+from .models import Editor, Article
 
 
 
@@ -41,8 +41,11 @@ def news_of_day(request) :
             News for {day}, {date.day}-{date.month}-{date.year}
           
           '''
+
+  news = Article.todays_news()
   
-  return render(request, 'news/today.html', {'html': html})
+  return render(request, 'news/today.html', {'html': html, 'news':news})
+
 
 
 def convert_dates(dates) :
