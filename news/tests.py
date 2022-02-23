@@ -1,3 +1,4 @@
+from turtle import title
 from django.test import TestCase
 from .models import Article, Tag, Editor
 
@@ -48,5 +49,37 @@ class TagTestClass(TestCase) :
     self.top.delete_editor()
     tags = Tag.objects.all()
     self.assertTrue(len(tags) -+1)
+
+
+class ArticleTestClass(TestCase) :
+  
+  def setUp(self) :
+
+    # Creating a new editor and saving it
+    self.josphine = Editor(first_name='Josphine', last_name ='Mbaisi', email ='mbaisijosphine@gmail.com')
+
+    self.josphine.save_editor()
+
+
+    # Creating a new tag and saving it
+    self.new_tag = Tag(name = '#testing')
+
+    self.new_tag.save()
+
+
+    # Creating a new article and saving it
+    self.new_article = Article(title='Test Article', post='This is a random test post', editor='self.josphine')
+
+    self.new_article.save()
+
+    self.new_article.tags.add(self.new_tag)
+
+
+  # Craeting a delete function for the article field
+  def tearDown(self) :
+    Editor.objects.all().delete()
+    Tag.objects.all().delete()
+    Article.objects.all().delete()
+
 
   
