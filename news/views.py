@@ -91,4 +91,4 @@ def past_days_news(request, past_date) :
 
   news = Article.days_news(date)
 
-  return render(request, 'news/archive.html' {'date':date, 'news':news})
+  return render(request, 'news/archive.html', {'date':date, "news":news})
