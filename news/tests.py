@@ -95,8 +95,8 @@ class ArticleTestClass(TestCase) :
 
 
   # def test_search_results(self) :
-  #   test_term = 'Programming'
-  #   articles_found = Article.search_by_title()
+  #   search_term = 'Programming'
+  #   articles_found = Article.search_by_title(search_term)
 
   #   self.assertTrue(len(articles_found) > 0)
     
