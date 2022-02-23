@@ -1,3 +1,4 @@
+from email import message
 from django.shortcuts import redirect, render
 from django.http import HttpResponse, Http404
 import datetime as dt
@@ -59,6 +60,28 @@ def convert_dates(dates) :
   day = days[day_number]
 
   return day
+
+
+
+# Function to search for results
+def search_results(request) :
+  if 'article' in request.GET and request.GET['article'] :
+    
+    search_term = request.GET.get('article')
+    
+
+    context = {
+    'found_articles' : Article.search_by_title(search_term),
+    }
+    message = f'{ search_term }'
+
+    return render(request, 'news/search.html', context, {'message':message})
+
+  else :
+    message = 'You haven\'t searched for any term!'
+
+    return render(request, 'news/search.html', {'message':message})
+
 
 
 # Function not working
