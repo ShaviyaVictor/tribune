@@ -3,8 +3,11 @@ from .models import Editor, Tag, Article
 
 
 
-
 # Register your models here.
+
+class ArticleAdmin(admin.ModelAdmin) :
+  filter_horizontal = ('tags',)
+
 admin.site.register(Editor)
 admin.site.register(Tag)
 admin.site.register(Article)
