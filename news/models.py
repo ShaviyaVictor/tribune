@@ -63,9 +63,9 @@ class Article(models.Model) :
   class Meta :
     ordering = ['-title']
 
-  # @classmethod
-  # def todays_news(cls) :
-  #   today = dt.date.today()
-  #   news = cls.objects.filter(pub_date__date = today)
+  @classmethod
+  def todays_news(cls) :
+    today = dt.date.today()
+    news = cls.objects.filter(pub_date__date = today)
 
-  #   return news
+    return news
