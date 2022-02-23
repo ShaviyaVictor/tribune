@@ -3,6 +3,7 @@ from django.shortcuts import redirect, render
 from django.http import HttpResponse, Http404
 import datetime as dt
 from .models import Editor, Article
+from django.core.exceptions import ObjectDoesNotExist
 
 
 
@@ -84,6 +85,9 @@ def search_results(request) :
 
 
 
+
+
+#############################################
 # Function not working
 def past_days_news(request, past_date) :
 
@@ -115,3 +119,17 @@ def past_days_news(request, past_date) :
   news = Article.days_news(date)
 
   return render(request, 'news/archive.html', {'date':date, "news":news})
+
+#############################################
+
+
+
+def article(request, article_id) :
+  
+  try :
+    article = Article.objects.get(id = article_id)
+
+  except ObjectDoesNotExist :
+    raise Http404()
+
+  return render(request, 'news/article.html', { 'article':article })
