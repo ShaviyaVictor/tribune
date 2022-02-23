@@ -22,7 +22,7 @@ class Editor(models.Model) :
   def save_editor(self) :
     self.save()
 
-  # Define the delete_editor() method to pass the test by raising an error
+  # # Define the delete_editor() method to pass the test by raising an error
   # def delete_editor(self) :
   #   self.delete()
 
@@ -63,9 +63,9 @@ class Article(models.Model) :
   class Meta :
     ordering = ['-title']
 
-  @classmethod
-  def todays_news(cls) :
-    today = dt.date.today()
-    news = cls.objects.filter(pub_date__date = today)
+  # @classmethod
+  # def todays_news(cls) :
+  #   today = dt.date.today()
+  #   news = cls.objects.filter(pub_date__date = today)
 
-    return news
+  #   return news

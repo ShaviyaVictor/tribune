@@ -63,11 +63,11 @@ class ArticleTestClass(TestCase) :
     # Creating a new tag and saving it
     self.new_tag = Tag(name = '#testing')
 
-    self.new_tag.save()
+    self.new_tag.save_tag()
 
 
     # Creating a new article and saving it
-    self.new_article = Article(title='Test Article', post='This is a random test post', editor='self.josphine')
+    self.new_article = Article(title='Test Article', post='This is a random test post', editor=self.josphine)
 
     self.new_article.save()
 
