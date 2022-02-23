@@ -63,6 +63,7 @@ class Article(models.Model) :
   class Meta :
     ordering = ['-title']
 
+  # Using filter method __date
   @classmethod
   def todays_news(cls) :
     today = dt.date.today()
@@ -70,14 +71,16 @@ class Article(models.Model) :
 
     return news
 
+  # Using filter method __date
   @classmethod
   def days_news(cls, date) :
     news = cls.objects.filter(pub_date__date = date)
 
     return news
 
-  # @classmethod
-  # def search_by_title(cls, search_term) :
-  #   news = cls.objects.filter(title__icontains = search_term)
+  # Using filter method __icontains
+  @classmethod
+  def search_by_title(cls, search_term) :
+    news = cls.objects.filter(title__icontains = search_term)
 
-  #   return news
+    return news
