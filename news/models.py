@@ -54,6 +54,7 @@ class Article(models.Model) :
   tags = models.ManyToManyField(Tag)
   # add a timestamp to our model and use an argument to enable us edit the time of edit
   pub_date = models.DateTimeField(default=timezone.now)
+  article_image = models.ImageField(upload_to='static/images')
 
 
 
