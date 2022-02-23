@@ -75,11 +75,21 @@ class ArticleTestClass(TestCase) :
     self.new_article.tags.add(self.new_tag)
 
 
-  # Craeting a delete function for the article field
+  def test_news_of_day(self) :
+    today_news = Article.todays_news()
+    
+    self.assertTrue(len(today_news) > 0)
+
+
+  # Craeting a delete method that deletes all instances of our models from the database after each test.
+
   def tearDown(self) :
     Editor.objects.all().delete()
     Tag.objects.all().delete()
     Article.objects.all().delete()
+
+
+
 
 
   
