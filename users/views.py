@@ -9,6 +9,9 @@ def register(request) :
   if request.method == 'post' :
     form = UserCreationForm(request.post)
 
+    if form.is_valid() :
+      username = form.cleaned_data.get('username')
+
   else :
   
     form = UserCreationForm()
