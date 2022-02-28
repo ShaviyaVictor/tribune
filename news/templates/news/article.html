@@ -7,6 +7,9 @@
 
 {{ block.super }}
 
+
+{% for articles in article %}
+
 <div class="container">
  
   <div class="row">
@@ -14,18 +17,25 @@
   </div>
 
   <div class="row">
-    <h1 class="text-center">{{article.title}}</h1>
+    <h1 class="text-center">{{articles.title}}</h1>
   </div>
 
   <div class="row">
-    <p>{{article.post}}</p>
+    <p>{{articles.post}}</p>
   </div>
 
   <div class="row">
-    <p>Posted {{article.pub_date|timesince}} by {{article.editor.first_name}}</p>
+    <p>Posted {{articles.pub_date|timesince}} by {{articles.editor.first_name}}</p>
   </div>
 
 </div>
+
+{% empty %}
+<div class="row">
+  <h2 class="text-center">Oops! No News Items for the day yet.</h2>
+</div>
+
+{% endfor %}
 
 
 {% endblock content %}

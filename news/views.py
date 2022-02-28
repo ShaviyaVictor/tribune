@@ -124,10 +124,10 @@ def past_days_news(request, past_date) :
 
 
 
-def article(request, article_id) :
+def article(request) :
   
   try :
-    article = Article.objects.get(id = article_id)
+    article = Article.objects.all()
 
   except ObjectDoesNotExist :
     raise Http404()
