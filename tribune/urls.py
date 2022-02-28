@@ -22,7 +22,7 @@ from users import views as user_views
 urlpatterns = [
     path('admin/', admin.site.urls),
 
-    re_path(r'^register/', user_views.register, name='register'),
+    re_path('register/', user_views.register, name='register'),
     # url(r'^register/', include('registration.backends.simple.urls')),
 
     path('', include('news.urls')),
