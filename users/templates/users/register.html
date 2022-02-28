@@ -25,15 +25,12 @@
     {% endfor %}-->
 
 
-    <h1>
-      Yes. Am in.
-    </h1>
 
     <div class="content-section">
 
       <form method="post" action="">
 
-        <!-- {% csrf_token %} -->
+        {% csrf_token %}
 
         <fieldset class="form-group">
 
@@ -41,7 +38,7 @@
             Join Today
           </legend>
 
-          {{ form }}
+          {{ form.as_p }}
 
         </fieldset>
 
