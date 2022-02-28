@@ -18,14 +18,22 @@
         <li> {{new.first_name}} {{new.last_name}} </li>
       </ul>
 
-    </div> -->
+    </div> 
+  
+  
+      
+    {% endfor %}-->
 
+
+    <h1>
+      Yes. Am in.
+    </h1>
 
     <div class="content-section">
 
       <form method="post" action="">
 
-        {% csrf_token %}
+        <!-- {% csrf_token %} -->
 
         <fieldset class="form-group">
 
@@ -62,8 +70,6 @@
     </div>
     
       
-    {% endfor %}
-
 
 {% endblock content %}
 
