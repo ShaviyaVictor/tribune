@@ -13,7 +13,7 @@ class Profile(models.Model) :
 
 
   def __str__(self) -> str:
-      return self.user
+      return f'{self.user.username}\'s profile'
 
   class Meta :
     ordering = ['-user']
