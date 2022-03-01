@@ -24,12 +24,19 @@
       <p class="article-content">{{ articles.post }}</p>
     </div>
   </article>
+  <div class="row" style="float: right;">
+    <small class="text-muted">
+      {{articles.pub_date|timesince}} ago
+    </small>
+  </div>
 
 </div>
 
-<!-- hjklkldfgfjhkn -->
 
 
+<!-- Previous Unstyled code -->
+
+<!-- 
 <div class="container">
  
   <div class="box" style="border: 2px solid #ccc; padding: 2em; margin: 1em;">
@@ -54,7 +61,7 @@
 
   </div>  
 
-</div>
+</div> -->
 
 {% empty %}
 <div class="row">
