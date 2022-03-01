@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.http import HttpResponseRedirect
 # from django.contrib.auth.forms import UserCreationForm
 from django.contrib import messages
@@ -21,7 +21,7 @@ def register(request) :
 
       messages.success(request, f'{ username }, your account has successfully been created!')
 
-      return HttpResponseRedirect('login')
+      return redirect('login')
 
   else :
   
@@ -58,7 +58,7 @@ def profile(request) :
       username = u_form.cleaned_data.get('username')
       messages.success(request, f'{ username }, your account has successfully been updated!')
 
-      return HttpResponseRedirect('profile')
+      return redirect('profile')
 
   else :
     u_form = UserUpdateForm(instance=request.user)
