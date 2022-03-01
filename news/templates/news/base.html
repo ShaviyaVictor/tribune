@@ -44,14 +44,20 @@
         </div>
 
         <div>
+
           {% if user.is_authenticated %}
+          <div class="navbar-nav">
+            <a class="nav-item nav-link" href="{% url 'profile' %}">PROFILE</a>
+          </div>
           <div class="navbar-nav">
             <a class="nav-item nav-link" href="{% url 'logout' %}">LOGOUT</a>
           </div>
+
           {% else %}
           <div class="navbar-nav">
             <a class="nav-item nav-link" href="{% url 'login' %}">LOGIN</a>
           </div>
+
           {% endif %}
         </div>
         
