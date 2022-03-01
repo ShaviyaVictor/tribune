@@ -8,20 +8,7 @@
     
 {{ block.super }}
 
-    <!-- <h1>
-      Below is a list of our top editors
-    </h1>
-
-    {% for new in news %}
-    
-    <div class="container">
-
-      <ul>
-        <li> {{new.first_name}} {{new.last_name}} </li>
-      </ul>
-
-    </div> 
-  
+   
   
       
     {% endfor %}-->
@@ -37,7 +24,7 @@
         <fieldset class="form-group">
 
           <legend class="border-bottom mb-4">
-            Join Today
+            Log in
           </legend>
 
           {{ form | crispy }}
@@ -47,7 +34,7 @@
         <div class="form-group">
 
           <button class="btn btn-outline-info" type="submit">
-            SIGN UP
+            SIGN IN
           </button>
 
         </div>
@@ -58,9 +45,9 @@
 
         <small class="text-muted">
           
-          Already have an Account? 
+          Need an Account? 
 
-          <a href="{% url 'login' %}" class="ml-2">Login</a>
+          <a href="{% url 'register' %}" class="ml-2">Register Now</a>
 
         </small>
 
