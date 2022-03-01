@@ -4,7 +4,7 @@ from django.http import HttpResponse, Http404
 import datetime as dt
 from .models import Editor, Article
 from django.core.exceptions import ObjectDoesNotExist
-
+from django.contrib.auth.decorators import login_required
 
 
 
@@ -30,7 +30,7 @@ def about(request) :
 
   return render(request, 'news/about.html', context)
 
-
+@login_required
 def news_of_day(request) :
 
   date = dt.date.today()
@@ -123,7 +123,7 @@ def past_days_news(request, past_date) :
 #############################################
 
 
-
+@login_required
 def article(request) :
   
   try :
