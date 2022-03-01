@@ -35,3 +35,7 @@ def register(request) :
 # messages.warning
 # messages.error
 # messages.debug
+
+def profile(request) :
+
+  return render(request, 'users/profile.html')
