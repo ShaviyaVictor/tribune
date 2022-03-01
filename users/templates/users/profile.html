@@ -22,11 +22,8 @@
       <div class="media">
         <div class="image_holder">
           <img class="rounded-circle account-img" style="margin: 1em;" src="{{ user.profile.image.url }}"> 
-        </div>  
-        
-        
-      </div>
-      
+        </div>          
+      </div>      
     </div>
     
     <div class="media-body ml-4">
@@ -41,7 +38,7 @@
 
     <!-- FORM HERE -->
 
-    <form method="post">
+    <form method="post" enctype="multipart/form-data">
 
       {% csrf_token %}
 
