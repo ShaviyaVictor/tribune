@@ -19,7 +19,7 @@ def register(request) :
 
       messages.success(request, f'{ username }, your account has successfully been created!')
 
-      return HttpResponseRedirect('Article')
+      return HttpResponseRedirect('login')
 
   else :
   

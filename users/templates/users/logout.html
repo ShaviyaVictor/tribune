@@ -1,0 +1,39 @@
+{% extends 'news/base.html' %}ags
+
+{% load crispy_forms_tags %}
+
+
+
+{% block content %}
+    
+{{ block.super }}
+
+  
+
+
+    <div class="content-section">
+
+      <h3>
+        Thanks for spending some time with us. 
+      </h3> 
+      <br>
+      <h4>
+        You have been logged out.
+      </h4>
+
+      <div class="border-top pt-3">
+
+        <small class="text-muted">
+
+          <a href="{% url 'login' %}">Log in again</a>
+
+        </small>
+
+      </div>
+
+    </div>
+    
+      
+
+{% endblock content %}
+
