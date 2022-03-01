@@ -12,21 +12,27 @@
 
 <div class="container">
  
-  <div class="row">
-    <img src="{{article.article_image.url}}"  class="img-responsive" alt="">
-  </div>
+  <div class="box" style="border: 2px solid #ccc; padding: 2em; margin: 1em;">
 
-  <div class="row">
-    <h1 class="text-center">{{articles.title}}</h1>
-  </div>
+    <div class="row border-bottom">
+      <h1>{{articles.title}}</h1>
+    </div>
+  
+    <div class="row">
+      <img src="{{article.article_image.url}}"  class="img-responsive" alt="">
+    </div>
+  
+    <div class="row">
+      <p>{{articles.post}}</p>
+    </div>
+  
+    <div class="row">
+      <small class="text-muted">
+        Posted {{articles.pub_date|timesince}} ago by {{articles.editor.first_name}}
+      </small>
+    </div>
 
-  <div class="row">
-    <p>{{articles.post}}</p>
-  </div>
-
-  <div class="row">
-    <p>Posted {{articles.pub_date|timesince}} ago by {{articles.editor.first_name}}</p>
-  </div>
+  </div>  
 
 </div>
 
