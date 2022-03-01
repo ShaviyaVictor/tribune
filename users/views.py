@@ -55,6 +55,11 @@ def profile(request) :
       u_form.save()
       p_form.save()
 
+      username = u_form.cleaned_data.get('username')
+      messages.success(request, f'{ username }, your account has successfully been updated!')
+
+      return HttpResponseRedirect('profile')
+
   else :
     u_form = UserUpdateForm(instance=request.user)
     p_form = ProfileUpdateForm(instance=request.user.profile)
