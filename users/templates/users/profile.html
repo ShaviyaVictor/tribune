@@ -33,36 +33,45 @@
         <strong>Bio</strong>
       </h6>
       <p>{{ user.profile.bio }}</p>
-      <small class="text-muted">{{ user.profile.city }}</small>
+      <small class="text-muted mb-4">{{ user.profile.city }}</small>
+      <hr>
+      <hr style="border: 1em solid #4e3; border-radius: 5px;">
+      <hr>
     </div>
 
     <!-- FORM HERE -->
 
-    <form method="post" enctype="multipart/form-data">
+    
+    <div class="border-bottom mb-4 mt-5">
 
-      {% csrf_token %}
+      <form method="post" enctype="multipart/form-data">
 
-      <fieldset class="form-group">
+        {% csrf_token %}
+  
+        <fieldset class="form-group">
+  
+          <legend class="border-bottom mb-4">
+            Profile Info
+          </legend>
+  
+          {{ u_form | crispy }}
+  
+          {{ p_form | crispy }}
+  
+        </fieldset>
+  
+        <div class="form-group">
+  
+          <button class="btn btn-outline-info" type="submit">
+            Update
+          </button>
+  
+        </div>
+  
+      </form>
 
-        <legend class="border-bottom mb-4">
-          Profile Info
-        </legend>
+    </div>
 
-        {{ u_form | crispy }}
-
-        {{ p_form | crispy }}
-
-      </fieldset>
-
-      <div class="form-group">
-
-        <button class="btn btn-outline-info" type="submit">
-          Update
-        </button>
-
-      </div>
-
-    </form>
 
 
   </div>
