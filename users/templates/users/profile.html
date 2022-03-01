@@ -16,15 +16,26 @@
 
 
 
-  <div class="content-section">
-    <div class="media">
-      <img class="rounded-circle account-img" src="{{ user.profile.image.url }}">
-      <div class="media-body mt-2">
-        <h2 class="account-heading">{{ user.username }}</h2>
-        <p class="text-secondary">{{ user.email }}</p>
+  <div class="profile-holder" style="border: 2px solid #4e3; margin: 1em; padding: 1em;">
+
+    <div class="content-section">
+      <div class="media">
+        <div class="image_holder">
+          <img class="rounded-circle account-img" style="margin: 1em;" src="{{ user.profile.image.url }}"> 
+        </div>          
       </div>
+      <!-- FORM HERE -->
     </div>
-    <!-- FORM HERE -->
+    <div class="media-body ml-4">
+      <h2 class="account-heading">{{ user.username }}</h2>
+      <p class="text-secondary">{{ user.email }}</p>
+      <h6>
+        <strong>Bio</strong>
+      </h6>
+      <p>{{ user.profile.bio }}</p>
+      <small class="text-muted">{{ user.profile.city }}</small>
+    </div>
+
   </div>
 
       
