@@ -11,6 +11,25 @@
 
 {% for articles in article %}
 
+
+<div class="box" style="border: 2px solid #ccc; padding: 2em; margin: 1em;">
+
+  <article class="media content-section">
+    <div class="media-body">
+      <div class="article-metadata mb-2 border-bottom">
+        <a class="mr-2" href="{% url 'profile' %}">{{ articles.editor }}</a>
+        <small class="text-muted">{{ articles.pub_date }}</small>
+      </div>
+      <h2><a class="article-title" href="{% url 'profile' %}">{{ articles.title }}</a></h2>
+      <p class="article-content">{{ articles.post }}</p>
+    </div>
+  </article>
+
+</div>
+
+<!-- hjklkldfgfjhkn -->
+
+
 <div class="container">
  
   <div class="box" style="border: 2px solid #ccc; padding: 2em; margin: 1em;">

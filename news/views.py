@@ -40,7 +40,7 @@ def news_of_day(request) :
 
   html = f'''
       
-            News for {day}, {date.day}-{date.month}-{date.year}
+            {day}, {date.day}-{date.month}-{date.year}
           
           '''
 
