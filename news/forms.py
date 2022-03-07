@@ -1,9 +1,11 @@
 from django import forms
+from django.contrib.auth.models import User
 
 
 
 
 class NewsLetterForm(forms.Form) :
-  your_name = forms.CharField(label='First Name', max_length=30)
-  email = forms.EmailField(label='Email')
+  username = forms.CharField(label='Your Name', max_length=30)
+  email = forms.EmailField()
+
   

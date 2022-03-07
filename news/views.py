@@ -5,6 +5,8 @@ import datetime as dt
 from .models import Editor, Article
 from django.core.exceptions import ObjectDoesNotExist
 from django.contrib.auth.decorators import login_required
+from .forms import NewsLetterForm
+from django.contrib import messages
 
 
 
@@ -45,8 +47,10 @@ def news_of_day(request) :
           '''
 
   news = Article.todays_news()
+
   
-  return render(request, 'news/today.html', {'html': html, 'news':news})
+  
+  return render(request, 'news/today.html', {'html': html, 'news':news} )
 
 
 
@@ -132,4 +136,23 @@ def article(request) :
   except ObjectDoesNotExist :
     raise Http404()
 
-  return render(request, 'news/article.html', { 'article':article })
+
+  # Start of the form view creation
+  if request.method == "POST" :
+    form = NewsLetterForm(request.POST)
+
+    if form.is_valid() :      
+
+      form.save()
+      
+      username = form.cleaned_data.get('username')
+
+      messages.success(request, f'{ username }, you have successfully subscribed to our newsletter!')
+
+      return redirect('Article')
+
+  else :
+  
+    form = NewsLetterForm()
+
+  return render(request, 'news/article.html', { 'article':article, 'form':form})

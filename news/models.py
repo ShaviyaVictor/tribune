@@ -1,3 +1,4 @@
+import email
 from django.utils import timezone
 from django.db import models 
 import datetime as dt
@@ -85,3 +86,8 @@ class Article(models.Model) :
     news = cls.objects.filter(title__icontains = search_term)
 
     return news
+
+
+class NewsletterRecipients(models.Model) :
+  username = models.CharField(max_length=30)
+  email = models.EmailField()
