@@ -62,7 +62,7 @@ class Article(models.Model) :
       return self.title
 
   class Meta :
-    ordering = ['-title']
+    ordering = ['-pub_date']
 
   # Using filter method __date
   @classmethod

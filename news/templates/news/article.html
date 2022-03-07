@@ -23,7 +23,7 @@
         <a class="mr-2" href="{% url 'profile' %}">{{ articles.editor }}</a>
         <small class="text-muted">{{ articles.pub_date }}</small>
       </div>
-      <h2><a class="article-title" href="{% url 'profile' %}">{{ articles.title }}</a></h2>
+      <h4 class="mt-4"><a class="article-title" href="{% url 'profile' %}">{{ articles.title }}</a></h4>
       <p class="article-content">{{ articles.post }}</p>
     </div>
   </article>
