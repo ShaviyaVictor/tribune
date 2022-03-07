@@ -146,10 +146,10 @@ def article(request) :
 
       form.save()
 
-      username = form.cleaned_data.get('username')
-      email = form.cleaned_data.get('email')
+      username = form.cleaned_data['username']
+      email = form.cleaned_data['email']
 
-      recipient = NewsletterRecipients({ username }, { email })
+      recipient = NewsletterRecipients(username = username, email =email)
       recipient.save()
 
 

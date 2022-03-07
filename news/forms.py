@@ -6,14 +6,14 @@ from .models import NewsletterRecipients
 
 
 class NewsLetterForm(forms.ModelForm) :
-  username = forms.CharField(label='Your Name', max_length=30)
+  # username = forms.CharField(label='Your Name', max_length=30)
   email = forms.EmailField()
 
-  # class Meta :
-  #   model = NewsletterRecipients
-  #   fields = [
-  #     'username',
-  #     'email',      
-  #   ]
+  class Meta :
+    model = NewsletterRecipients
+    fields = [
+      'username',
+      'email',      
+    ]
 
   
