@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Editor, Tag, Article
+from .models import Editor, Tag, Article, NewsletterRecipients
 
 
 
@@ -11,3 +11,4 @@ class ArticleAdmin(admin.ModelAdmin) :
 admin.site.register(Editor)
 admin.site.register(Tag)
 admin.site.register(Article)
+admin.site.register(NewsletterRecipients)

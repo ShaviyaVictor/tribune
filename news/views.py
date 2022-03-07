@@ -1,8 +1,8 @@
 from email import message
 from django.shortcuts import redirect, render
-from django.http import HttpResponse, Http404
+from django.http import HttpResponse, Http404, HttpResponseRedirect
 import datetime as dt
-from .models import Editor, Article
+from .models import Editor, Article, NewsletterRecipients
 from django.core.exceptions import ObjectDoesNotExist
 from django.contrib.auth.decorators import login_required
 from .forms import NewsLetterForm
@@ -146,10 +146,16 @@ def article(request) :
       form.save()
       
       username = form.cleaned_data.get('username')
+      email = form.cleaned_data.get('email')
+
+      recipient = NewsletterRecipients({ username }, { email })
+      recipient.save()
+
+
 
       messages.success(request, f'{ username }, you have successfully subscribed to our newsletter!')
 
-      return redirect('Article')
+      return redirect('News~Today')
 
   else :
   
