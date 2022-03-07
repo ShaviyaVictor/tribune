@@ -139,12 +139,13 @@ def article(request) :
 
   # Start of the form view creation
   if request.method == "POST" :
+
     form = NewsLetterForm(request.POST)
 
-    if form.is_valid() :      
+    if form.is_valid() : 
 
       form.save()
-      
+
       username = form.cleaned_data.get('username')
       email = form.cleaned_data.get('email')
 
