@@ -7,6 +7,7 @@ from django.core.exceptions import ObjectDoesNotExist
 from django.contrib.auth.decorators import login_required
 from .forms import NewsLetterForm
 from django.contrib import messages
+from .email import send_welcome_email
 
 
 
@@ -149,8 +150,10 @@ def article(request) :
       username = form.cleaned_data['username']
       email = form.cleaned_data['email']
 
-      recipient = NewsletterRecipients(username = username, email =email)
+      recipient = NewsletterRecipients(username=username, email=email)
       recipient.save()
+
+      send_welcome_email(username, email)
 
 
 
