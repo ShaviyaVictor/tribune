@@ -2,7 +2,7 @@ from email import message
 from django.shortcuts import redirect, render
 from django.http import HttpResponse, Http404, HttpResponseRedirect
 import datetime as dt
-from .models import Editor, Article, NewsletterRecipients
+from .models import Editor, Article, NewsletterRecipients, MoringaMerch
 from django.core.exceptions import ObjectDoesNotExist
 from django.contrib.auth.decorators import login_required
 from .forms import NewsLetterForm
@@ -11,6 +11,14 @@ from .email import send_welcome_email
 
 # Start of AJAX imports
 from django.http import JsonResponse
+
+# Building a RESTful API
+from rest_framework.response import Response
+from rest_framework.views import APIView
+from .serializer import MerchSerializer
+from django.shortcuts import get_object_or_404
+from rest_framework import status
+
 
 
 
@@ -194,4 +202,15 @@ def newsletter(request) :
   # messages.success(request, f'{ username }, you have successfully subscribed to our newsletter mailing list!')
 
   return JsonResponse(data)
+
+
+
+# Creating an API view
+class MerchList(APIView) :
+  def get(self, request, format=None) :
+
+    all_merch = MoringaMerch.objects.all()
+    serializers = MerchSerializer(all_merch, many=True)
+
+    return Response(serializers.data)
 

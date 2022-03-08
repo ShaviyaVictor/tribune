@@ -13,6 +13,8 @@ urlpatterns = [
   path('results/', views.search_results, name='Search~Results'),
   path('article/', views.article, name='Article'),
   path('ajax/newsletter/', views.newsletter, name='newsletter'),
+
+  path('api/merch/', views.MerchList.as_view()),
   
   # url path not working as expected
   path('archives/(\d{4}-\d{2}-\d{2})', views.past_days_news, name='News~Archives'),
