@@ -37,6 +37,7 @@ INSTALLED_APPS = [
     'news.apps.NewsConfig',
     'users.apps.UsersConfig',
     'crispy_forms',
+    'rest_framework',
 
     'django.contrib.admin',
     'django.contrib.auth',
