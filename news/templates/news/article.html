@@ -1,6 +1,8 @@
 {% extends 'news/base.html' %}
 
+
 {% load crispy_forms_tags %}
+
 
 {% load static %}
 
@@ -104,3 +106,14 @@
 
 
 {% endblock content %}
+
+
+<!-- End of the block content -->
+
+{% block scripts %}
+
+{{ block.super }}
+
+<script type="text/javascript" src="{% static 'js/newsletter.js' %}"></script>
+
+{% endblock %}
