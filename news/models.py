@@ -97,3 +97,16 @@ class NewsletterRecipients(models.Model) :
 
   class Meta :
     ordering = ['-username']
+
+
+
+class MoringaMerch(models.Model) :
+  name = models.CharField(max_length=40)
+  description = models.TextField()
+  price = models.DecimalField(decimal_places=2, max_digits=20)
+
+  def __str__(self) -> str:
+      return self.name
+
+  # class Meta :
+  #   ordering = ['-name']
