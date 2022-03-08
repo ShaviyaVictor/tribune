@@ -172,3 +172,21 @@ def article(request) :
   #   form = NewsLetterForm()
 
   return render(request, 'news/article.html', { 'article':article, 'form':form})
+
+
+
+# AJAX view function for asynchronous functionality
+def newsletter(request) :
+  
+  username = request.POST.get('username')
+  email = request.POST.get('email')
+
+  recipient = NewsletterRecipients(username=username, email=email)
+  recipient.save()
+
+  send_welcome_email(username, email)
+
+  data = messages.success(request, f'{ username }, you have successfully subscribed to our newsletter mailing list!')
+
+  return JsonResponse(data)
+

@@ -12,6 +12,7 @@ urlpatterns = [
   path('today/', views.news_of_day, name='News~Today'),
   path('results/', views.search_results, name='Search~Results'),
   path('article/', views.article, name='Article'),
+  path('ajax/newsletter', views.newsletter, name='newsletter')
   
   # url path not working as expected
   path('archives/(\d{4}-\d{2}-\d{2})', views.past_days_news, name='News~Archives'),
