@@ -9,6 +9,9 @@ from .forms import NewsLetterForm
 from django.contrib import messages
 from .email import send_welcome_email
 
+# Start of AJAX imports
+from django.http import JsonResponse
+
 
 
 
@@ -126,10 +129,13 @@ def past_days_news(request, past_date) :
   return render(request, 'news/archive.html', {'date':date, "news":news})
 
 #############################################
+# AJAX implementation so as to update the db and send the email asynchronously
 
 
 @login_required
 def article(request) :
+
+  form = NewsLetterForm()
   
   try :
     article = Article.objects.all()
@@ -138,31 +144,31 @@ def article(request) :
     raise Http404()
 
 
-  # Start of the form view creation
-  if request.method == "POST" :
+  # # Start of the form view creation
+  # if request.method == "POST" :
 
-    form = NewsLetterForm(request.POST)
+  #   form = NewsLetterForm(request.POST)
 
-    if form.is_valid() : 
+  #   if form.is_valid() : 
 
-      form.save()
+  #     form.save()
 
-      username = form.cleaned_data['username']
-      email = form.cleaned_data['email']
+  #     username = form.cleaned_data['username']
+  #     email = form.cleaned_data['email']
 
-      recipient = NewsletterRecipients(username=username, email=email)
-      recipient.save()
+  #     recipient = NewsletterRecipients(username=username, email=email)
+  #     recipient.save()
 
-      send_welcome_email(username, email)
+  #     send_welcome_email(username, email)
 
 
 
-      messages.success(request, f'{ username }, you have successfully subscribed to our newsletter!')
+  #     messages.success(request, f'{ username }, you have successfully subscribed to our newsletter!')
 
-      return redirect('News~Today')
+  #     return redirect('News~Today')
 
-  else :
+  # else :
   
-    form = NewsLetterForm()
+  #   form = NewsLetterForm()
 
   return render(request, 'news/article.html', { 'article':article, 'form':form})
