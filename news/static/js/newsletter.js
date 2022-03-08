@@ -1,7 +1,25 @@
 $(document).ready(function() {
-  
-  $('form').submit(function(event) {
+
+  $('form').on('submit', '#post-form', function(event) {
     event.preventDefault()
-  }) //End of submit event
+
+    form = $('form')
+
+    $.ajax({
+
+      'url': '/ajax/newsletter/',
+      'type': 'POST',
+      'data': form.serialize(),
+      'dataType': 'json',
+      'success': function(data){
+        alert(data['success'])
+      },
+
+    }) // End of AJAX method
+
+    $('#id_username').val('')
+    $("id_email").val('')
+
+  }) // End of submit event
 
 }) // End of document ready function

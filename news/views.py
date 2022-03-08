@@ -18,11 +18,11 @@ from django.http import JsonResponse
 
 # Create your views here.
 def welcome(request) :
-  
+
   context = {
     'news': Editor.objects.all()
   }
-  
+
 
   return render(request, 'news/home.html', context)
 
@@ -45,15 +45,15 @@ def news_of_day(request) :
   day = convert_dates(date)
 
   html = f'''
-      
+
             {day}, {date.day}-{date.month}-{date.year}
-          
+
           '''
 
   news = Article.todays_news()
 
-  
-  
+
+
   return render(request, 'news/today.html', {'html': html, 'news':news} )
 
 
@@ -61,7 +61,7 @@ def news_of_day(request) :
 def convert_dates(dates) :
 
   # A function that gets the weekday number fro the date
-  
+
   day_number = dt.date.weekday(dates)
   days = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday']
 
@@ -75,9 +75,9 @@ def convert_dates(dates) :
 # Function to search for results
 def search_results(request) :
   if 'article' in request.GET and request.GET['article'] :
-    
+
     search_term = request.GET.get('article')
-    
+
 
     context = {
     'found_articles' : Article.search_by_title(search_term),
@@ -106,7 +106,7 @@ def past_days_news(request, past_date) :
   except ValueError :
   # Raise 404 error when ValueError is thrown
     raise Http404()
-    
+
     assert False
 
   day= convert_dates(date)
@@ -135,8 +135,8 @@ def past_days_news(request, past_date) :
 @login_required
 def article(request) :
 
-  form = NewsLetterForm()
-  
+  # form = NewsLetterForm()
+
   try :
     article = Article.objects.all()
 
@@ -144,32 +144,34 @@ def article(request) :
     raise Http404()
 
 
-  # # Start of the form view creation
-  # if request.method == "POST" :
+  # Start of the form view creation
+  if request.method == "POST" :
 
-  #   form = NewsLetterForm(request.POST)
-
-  #   if form.is_valid() : 
-
-  #     form.save()
-
-  #     username = form.cleaned_data['username']
-  #     email = form.cleaned_data['email']
-
-  #     recipient = NewsletterRecipients(username=username, email=email)
-  #     recipient.save()
-
-  #     send_welcome_email(username, email)
+    form = NewsLetterForm(request.POST)
 
 
 
-  #     messages.success(request, f'{ username }, you have successfully subscribed to our newsletter!')
+    if form.is_valid() :
 
-  #     return redirect('News~Today')
+      # form.save()
 
-  # else :
-  
-  #   form = NewsLetterForm()
+      username = form.cleaned_data['username']
+      email = form.cleaned_data['email']
+
+      recipient = NewsletterRecipients(username=username, email=email)
+      recipient.save()
+
+      send_welcome_email(username, email)
+
+
+
+      # messages.success(request, f'{ username }, you have successfully subscribed to our newsletter!')
+
+      # return redirect('News~Today')
+
+  else :
+
+    form = NewsLetterForm()
 
   return render(request, 'news/article.html', { 'article':article, 'form':form})
 
@@ -177,16 +179,19 @@ def article(request) :
 
 # AJAX view function for asynchronous functionality
 def newsletter(request) :
-  
-  username = request.POST.get('username')
-  email = request.POST.get('email')
 
-  recipient = NewsletterRecipients(username=username, email=email)
-  recipient.save()
 
-  send_welcome_email(username, email)
+  # username = request.POST.get('username')
+  # email = request.POST.get('email')
 
-  data = messages.success(request, f'{ username }, you have successfully subscribed to our newsletter mailing list!')
+  # recipient = NewsletterRecipients(username=username, email=email)
+  # recipient.save()
+
+  # send_welcome_email(username, email)
+
+  data = {'success': 'You have successfully subscribed to our newsletter mailing list!'}
+
+  # messages.success(request, f'{ username }, you have successfully subscribed to our newsletter mailing list!')
 
   return JsonResponse(data)
 

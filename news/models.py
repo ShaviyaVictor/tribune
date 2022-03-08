@@ -91,3 +91,9 @@ class Article(models.Model) :
 class NewsletterRecipients(models.Model) :
   username = models.CharField(max_length=30)
   email = models.EmailField()
+
+  def __str__(self) -> str:
+      return self.username
+
+  class Meta :
+    ordering = ['-username']
