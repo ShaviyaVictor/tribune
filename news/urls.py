@@ -15,6 +15,8 @@ urlpatterns = [
   path('ajax/newsletter/', views.newsletter, name='newsletter'),
 
   path('api/merch/', views.MerchList.as_view()),
+
+  path('api/merch/merch-id/(?P<pk>[0-9]+)/', views.MerchDescription.as_view()),
   
   # url path not working as expected
   path('archives/(\d{4}-\d{2}-\d{2})', views.past_days_news, name='News~Archives'),
