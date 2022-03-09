@@ -25,6 +25,8 @@ from django.conf.urls.static import static
 
 from django.contrib.auth import views as auth_views
 
+from rest_framework.authtoken.views import obtain_auth_token
+
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -38,6 +40,9 @@ urlpatterns = [
     path('', include('news.urls')),
 
     re_path('profile/', user_views.profile, name='profile'),
+
+    path('api-token-auth/', obtain_auth_token),
+    
 ]
 
 
