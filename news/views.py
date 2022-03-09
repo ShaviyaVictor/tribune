@@ -264,3 +264,10 @@ class MerchDescription(APIView) :
 
     else :
       return Response(serializers.errors, status=status.HTTP_400_BAD_REQUEST)
+
+
+  def delete(self, request, pk, format=None) :
+    merch = self.get_merch(pk)
+    merch.delete()
+
+    return Response(status=status.HTTP_204_NO_CONTENT)
