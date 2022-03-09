@@ -232,3 +232,22 @@ class MerchList(APIView) :
   permission_classes = (IsAdminOrReadOnly,)
 
 
+
+class MerchDescription(APIView) :
+
+  permission_classes = (IsAdminOrReadOnly,)
+
+  def get_merch(self, pk) :
+    
+    try :
+      return MoringaMerch.objects.get(pk=pk)
+
+    except MoringaMerch.DoesNotExist :
+      return Http404
+
+
+  def get(self, request, pk, formart=None) :
+    merch = self.get_merch(pk)
+    serializers = MerchSerializer(merch)
+
+    return Response(serializers.data)
