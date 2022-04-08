@@ -175,7 +175,7 @@ def article(request) :
 
 
 
-      # messages.success(request, f'{ username }, you have successfully subscribed to our newsletter!')
+      # messages.success(request, f'{ username }, you have succdescriptionessfully subscribed to our newsletter!')
 
       # return redirect('News~Today')
 
@@ -229,7 +229,7 @@ class MerchList(APIView) :
 
       return Response(serializers.errors, status=status.HTTP_400_BAD_REQUEST)
 
-  permission_classes = (IsAdminOrReadOnly,)
+  # permission_classes = (IsAdminOrReadOnly,)
 
 
 
